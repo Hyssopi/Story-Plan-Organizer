@@ -8,6 +8,7 @@ Visually maps characters, events, stories, and their connections using diagrams.
 ## Usage Instructions
 - `esc` to unhighlight all nodes
 - `d` + left mouse click to delete node/link
+- Right mouse click to scroll to location
 - Manually edit JSON to add image link in `imageSrc` for Character and Location nodes
 
 ## Working Demo

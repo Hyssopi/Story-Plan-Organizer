@@ -99,6 +99,10 @@ const state = {
 window.onbeforeunload = function (event) {
     event.preventDefault();
 };
+document.oncontextmenu = (event) => {
+    event.preventDefault();
+    window.scroll(event.pageX - window.innerWidth / 2, event.pageY - window.innerHeight / 2);
+};
 window.addEventListener('keydown', (event) => keydownResponse(event, state), false);
 window.addEventListener('keyup', (event) => keyupResponse(event, state), false);
 function keydownResponse(event, state) {
@@ -115,10 +119,6 @@ function keyupResponse(event, state) {
         state.deleting = false;
     }
 }
-document.oncontextmenu = (event) => {
-    event.preventDefault();
-    window.scroll(event.pageX - window.innerWidth / 2, event.pageY - window.innerHeight / 2);
-};
 // Loading Toolbar create node button icon colors
 for (const nodeType of [
     NodeType.Character,

@@ -107,6 +107,10 @@ const state: State = {
 window.onbeforeunload = function (event: BeforeUnloadEvent) {
   event.preventDefault();
 };
+document.oncontextmenu = (event: MouseEvent): void => {
+  event.preventDefault();
+  window.scroll(event.pageX - window.innerWidth / 2, event.pageY - window.innerHeight / 2);
+};
 window.addEventListener('keydown', (event: KeyboardEvent): void => keydownResponse(event, state), false);
 window.addEventListener('keyup', (event: KeyboardEvent): void => keyupResponse(event, state), false);
 
@@ -125,11 +129,6 @@ function keyupResponse(event: KeyboardEvent, state: State): void {
     state.deleting = false;
   }
 }
-
-document.oncontextmenu = (event: MouseEvent): void => {
-  event.preventDefault();
-  window.scroll(event.pageX - window.innerWidth / 2, event.pageY - window.innerHeight / 2);
-};
 
 // Loading Toolbar create node button icon colors
 for (const nodeType of [
