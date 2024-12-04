@@ -116,18 +116,6 @@ function keyupResponse(event, state) {
         state.deleting = false;
     }
 }
-const pointerScroll = (element) => {
-    const dragStart = (e) => element.setPointerCapture(e.pointerId);
-    const dragEnd = (e) => element.releasePointerCapture(e.pointerId);
-    const drag = (e) => element.hasPointerCapture(e.pointerId) && (element.scrollLeft -= e.movementX);
-    element.addEventListener('pointerdown', dragStart);
-    element.addEventListener('pointerup', dragEnd);
-    element.addEventListener('pointermove', drag);
-};
-const parentElement = document.getElementById('parent');
-if (parentElement) {
-    pointerScroll(parentElement);
-}
 // Loading Toolbar create node button icon colors
 for (const nodeType of [
     NodeType.Character,
