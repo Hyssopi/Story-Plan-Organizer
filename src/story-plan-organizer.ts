@@ -127,49 +127,6 @@ function keyupResponse(event: KeyboardEvent, state: State): void {
   }
 }
 
-const setupMousePanning = (): void => {
-  const parent = document.body;
-
-  let startY: number;
-  let startX: number;
-  let scrollTop: number;
-  let scrollLeft: number;
-  let isDown: boolean;
-  
-  parent.addEventListener("mousedown", (e) => mouseIsDown(e));
-  parent.addEventListener("mouseup", mouseUp);
-  parent.addEventListener("mouseleave", mouseLeave);
-  parent.addEventListener("mousemove", (e) => mouseMove(e));
-  
-  function mouseIsDown(e: MouseEvent) {
-    isDown = true;
-    startY = e.pageY - parent.offsetTop;
-    scrollTop = parent.scrollTop;
-    startX = e.pageX - parent.offsetLeft;
-    scrollLeft = parent.scrollLeft;
-  }
-  function mouseUp() {
-    isDown = false;
-  }
-  function mouseLeave() {
-    isDown = false;
-  }
-  function mouseMove(e: MouseEvent) {
-    if (isDown) {
-      e.preventDefault();
-      //Move vertcally
-      const y = e.pageY - parent.offsetTop;
-      const walkY = (y - startY) * 5;
-      parent.scrollTop = scrollTop - walkY;
-      //Move horizontally
-      const x = e.pageX - parent.offsetLeft;
-      const walkX = (x - startX) * 5;
-      parent.scrollLeft = scrollLeft - walkX;
-    }
-  }
-};
-setupMousePanning();
-
 // Loading Toolbar create node button icon colors
 for (const nodeType of [
   NodeType.Character,
