@@ -116,7 +116,6 @@ function keyupResponse(event, state) {
         state.deleting = false;
     }
 }
-document.onclick = (e) => window.scroll((e.pageX - window.innerWidth / 2), (e.pageY - window.innerHeight / 2));
 // Loading Toolbar create node button icon colors
 for (const nodeType of [
     NodeType.Character,
