@@ -141,12 +141,7 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
   const node2 = get_node(nodeId2, state.nodes);
   if (node1 && node2) {
     const newElement: HTMLDivElement = document.createElement('div');
-    const parentElement: HTMLElement | null = document.getElementById('parent');
-    if (!parentElement) {
-      console.error('Error: Cannot get parent element.');
-      return;
-    }
-    const newLine: HTMLDivElement = parentElement.appendChild(newElement);
+    const newLine: HTMLDivElement = document.body.appendChild(newElement);
     newLine.className = 'line';
 
     const points: { point1: Point; point2: Point } = calculate_shortest_distance(node1, node2);

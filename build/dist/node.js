@@ -110,12 +110,7 @@ export const get_icon = (type) => {
 };
 export const create_node_element = (node, state) => {
     const newElement = document.createElement('div');
-    const parentElement = document.getElementById('parent');
-    if (!parentElement) {
-        console.error('Error: Cannot get parent element.');
-        return;
-    }
-    const newNodeElement = parentElement.appendChild(newElement);
+    const newNodeElement = document.body.appendChild(newElement);
     newNodeElement.id = node.id;
     newNodeElement.className = 'node';
     newNodeElement.style.top = node.location.y + 'px';
