@@ -141,7 +141,6 @@ const setupMousePanning = () => {
         isDown = false;
     }
     function mouseMove(e) {
-        console.log('TEST POINT A');
         if (isDown) {
             e.preventDefault();
             //Move vertcally
