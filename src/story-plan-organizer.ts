@@ -127,7 +127,7 @@ function keyupResponse(event: KeyboardEvent, state: State): void {
   }
 }
 
-document.onclick = (e) => window.scroll((e.pageX-window.innerWidth/2),(e.pageY-window.innerHeight/2));
+document.onclick = (e) => window.scroll(e.pageX - window.innerWidth / 2, e.pageY - window.innerHeight / 2);
 
 // Loading Toolbar create node button icon colors
 for (const nodeType of [
@@ -157,8 +157,9 @@ const download = (fileName: string, text: string): void => {
   document.body.removeChild(element);
 };
 
-document.getElementById('export')?.addEventListener('click', (): void => {
+document.getElementById('export')?.addEventListener('click', (event: MouseEvent): void => {
   console.log(state);
+  event.stopPropagation();
 
   const fileName: string = 'story.json';
   const dto: Dto = { nodes: state.nodes, links: state.links };
@@ -233,7 +234,9 @@ const reset = (state: State): void => {
 
 // Hide / Show All
 let toggleVisibility: number = 0;
-document.getElementById('toggle-visibility')?.addEventListener('click', (): void => {
+document.getElementById('toggle-visibility')?.addEventListener('click', (event: MouseEvent): void => {
+  event.stopPropagation();
+
   const accordions = document.getElementsByClassName('accordion');
   for (let i = 0; i < accordions.length; i++) {
     const panel = accordions[i].nextElementSibling as HTMLDivElement;
