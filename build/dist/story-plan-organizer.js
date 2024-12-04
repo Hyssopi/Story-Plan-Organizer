@@ -116,7 +116,7 @@ function keyupResponse(event, state) {
         state.deleting = false;
     }
 }
-document.onclick = (e) => window.scroll(e.pageX - window.innerWidth / 2, e.pageY - window.innerHeight / 2);
+document.onclick = (e) => window.scroll((e.pageX - window.innerWidth / 2), (e.pageY - window.innerHeight / 2));
 // Loading Toolbar create node button icon colors
 for (const nodeType of [
     NodeType.Character,
@@ -143,9 +143,8 @@ const download = (fileName, text) => {
     element.click();
     document.body.removeChild(element);
 };
-(_a = document.getElementById('export')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', (event) => {
+(_a = document.getElementById('export')) === null || _a === void 0 ? void 0 : _a.addEventListener('click', () => {
     console.log(state);
-    event.stopPropagation();
     const fileName = 'story.json';
     const dto = { nodes: state.nodes, links: state.links };
     const fileContent = JSON.stringify(dto, null, 2);
@@ -211,9 +210,8 @@ document.getElementById('inputLoadFile').onchange = (event) => {
 };
 // Hide / Show All
 let toggleVisibility = 0;
-(_b = document.getElementById('toggle-visibility')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', (event) => {
+(_b = document.getElementById('toggle-visibility')) === null || _b === void 0 ? void 0 : _b.addEventListener('click', () => {
     var _a, _b;
-    event.stopPropagation();
     const accordions = document.getElementsByClassName('accordion');
     for (let i = 0; i < accordions.length; i++) {
         const panel = accordions[i].nextElementSibling;
