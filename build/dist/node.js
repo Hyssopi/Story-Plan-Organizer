@@ -110,7 +110,12 @@ export const get_icon = (type) => {
 };
 export const create_node_element = (node, state) => {
     const newElement = document.createElement('div');
-    const newNodeElement = document.body.appendChild(newElement);
+    const pannableElement = document.getElementById('pannable');
+    if (!pannableElement) {
+        console.error('Error: Cannot get pannable element.');
+        return;
+    }
+    const newNodeElement = pannableElement.appendChild(newElement);
     newNodeElement.id = node.id;
     newNodeElement.className = 'node';
     newNodeElement.style.top = node.location.y + 'px';

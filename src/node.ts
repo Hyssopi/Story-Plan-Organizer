@@ -161,7 +161,12 @@ export const get_icon = (type: NodeType): { color: Color_Hex; backgroundColor: C
 
 export const create_node_element = (node: Node, state: State): void => {
   const newElement: HTMLDivElement = document.createElement('div');
-  const newNodeElement: HTMLDivElement = document.body.appendChild(newElement);
+  const pannableElement = document.getElementById('pannable');
+  if (!pannableElement) {
+      console.error('Error: Cannot get pannable element.');
+      return;
+  }
+  const newNodeElement: HTMLDivElement = pannableElement.appendChild(newElement);
   newNodeElement.id = node.id;
   newNodeElement.className = 'node';
   newNodeElement.style.top = node.location.y + 'px';

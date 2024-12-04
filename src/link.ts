@@ -141,7 +141,12 @@ const create_line = (nodeId1: UUID, nodeId2: UUID, state: State): void => {
   const node2 = get_node(nodeId2, state.nodes);
   if (node1 && node2) {
     const newElement: HTMLDivElement = document.createElement('div');
-    const newLine: HTMLDivElement = document.body.appendChild(newElement);
+    const pannableElement = document.getElementById('pannable');
+    if (!pannableElement) {
+        console.error('Error: Cannot get pannable element.');
+        return;
+    }
+    const newLine: HTMLDivElement = pannableElement.appendChild(newElement);
     newLine.className = 'line';
 
     const points: { point1: Point; point2: Point } = calculate_shortest_distance(node1, node2);

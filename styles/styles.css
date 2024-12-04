@@ -10,6 +10,12 @@ body
   scroll-behavior: smooth;
 }
 
+#pannable
+{
+  width: 9999px;
+  height: 9999px;
+}
+
 .toolbar-button
 {
   background-color: white;

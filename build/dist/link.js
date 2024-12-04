@@ -127,7 +127,12 @@ const create_line = (nodeId1, nodeId2, state) => {
     const node2 = get_node(nodeId2, state.nodes);
     if (node1 && node2) {
         const newElement = document.createElement('div');
-        const newLine = document.body.appendChild(newElement);
+        const pannableElement = document.getElementById('pannable');
+        if (!pannableElement) {
+            console.error('Error: Cannot get pannable element.');
+            return;
+        }
+        const newLine = pannableElement.appendChild(newElement);
         newLine.className = 'line';
         const points = calculate_shortest_distance(node1, node2);
         const gradientId = nodeId1 + '_' + nodeId2;
