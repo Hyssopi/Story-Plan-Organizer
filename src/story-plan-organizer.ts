@@ -127,6 +127,22 @@ function keyupResponse(event: KeyboardEvent, state: State): void {
   }
 }
 
+const pointerScroll = (element: Element): void => {
+  const dragStart = (e: Event) => element.setPointerCapture((e as PointerEvent).pointerId);
+  const dragEnd = (e: Event) => element.releasePointerCapture((e as PointerEvent).pointerId);
+  const drag = (e: Event) =>
+    element.hasPointerCapture((e as PointerEvent).pointerId) && (element.scrollLeft -= (e as PointerEvent).movementX);
+
+  element.addEventListener('pointerdown', dragStart);
+  element.addEventListener('pointerup', dragEnd);
+  element.addEventListener('pointermove', drag);
+};
+
+const parentElement = document.getElementById('parent');
+if (parentElement) {
+  pointerScroll(parentElement);
+}
+
 // Loading Toolbar create node button icon colors
 for (const nodeType of [
   NodeType.Character,
